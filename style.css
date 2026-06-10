@@ -33,7 +33,7 @@ body.light-mode {
 
 /* --- Base Styles --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 90%; }
 
 ::selection { background: var(--selection-bg); color: var(--text-main); }
 
@@ -50,7 +50,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Outfit', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     overflow-x: hidden;
     line-height: 1.6;
     transition: background-color 0.6s ease, color 0.6s ease;
@@ -88,10 +88,10 @@ nav.nav-hidden {
 
 nav a, .theme-btn {
     color: var(--text-muted); text-decoration: none;
-    width: 48px; height: 48px;
+    width: 44px; height: 44px;
     display: flex; align-items: center; justify-content: center;
     border-radius: 50%; transition: var(--transition);
-    position: relative; cursor: pointer; border: none; background: transparent; font-size: 1.3rem;
+    position: relative; cursor: pointer; border: none; background: transparent; font-size: 1.25rem;
 }
 
 nav a:hover, nav a.active, .theme-btn:hover {
@@ -103,17 +103,17 @@ nav a::after, .theme-btn::after {
     content: attr(data-tooltip);
     position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(10px);
     background: var(--tooltip-bg); color: white; padding: 8px 16px; border-radius: 12px;
-    font-size: 0.95rem; font-weight: 800; opacity: 0; pointer-events: none;
+    font-size: 0.9rem; font-weight: 800; opacity: 0; pointer-events: none;
     transition: var(--transition); white-space: nowrap; box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
 nav a:hover::after, .theme-btn:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 /* --- Global Sections --- */
-section { padding: 14rem 2.5rem; max-width: 1400px; margin: 0 auto; }
+section { padding: 12rem 2.5rem; max-width: 1400px; margin: 0 auto; }
 .section-title { 
-    font-size: clamp(3.5rem, 10vw, 7.5rem); 
-    margin-bottom: 8rem; text-align: center; 
+    font-size: clamp(3rem, 8vw, 6.5rem); 
+    margin-bottom: 7rem; text-align: center; 
     font-family: 'Playfair Display', serif;
     letter-spacing: -2px;
     line-height: 1.1;
@@ -121,9 +121,9 @@ section { padding: 14rem 2.5rem; max-width: 1400px; margin: 0 auto; }
 .section-title span { color: var(--primary); font-style: italic; text-shadow: 0 0 30px var(--primary-glow); }
 
 /* --- Hero --- */
-header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 12rem 3rem 3rem; position: relative; }
+header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 10rem 3rem 3rem; position: relative; }
 .hero-title { 
-    font-size: clamp(4.5rem, 16vw, 10rem); 
+    font-size: clamp(4rem, 14vw, 9rem); 
     font-family: 'Playfair Display', serif; 
     line-height: 0.9; 
     letter-spacing: -2px;
