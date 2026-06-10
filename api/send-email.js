@@ -9,7 +9,8 @@ export default async function handler(req, res) {
     const health = {
         serviceIdSet: !!process.env.EMAILJS_SERVICE_ID,
         templateIdSet: !!process.env.EMAILJS_TEMPLATE_ID,
-        publicKeySet: !!process.env.EMAILJS_PUBLIC_KEY
+        publicKeySet: !!process.env.EMAILJS_PUBLIC_KEY,
+        privateKeySet: !!process.env.EMAILJS_PRIVATE_KEY
     };
 
     if (!name || !email || !message) {
@@ -26,6 +27,7 @@ export default async function handler(req, res) {
                 service_id: process.env.EMAILJS_SERVICE_ID,
                 template_id: process.env.EMAILJS_TEMPLATE_ID,
                 user_id: process.env.EMAILJS_PUBLIC_KEY,
+                accessToken: process.env.EMAILJS_PRIVATE_KEY, // Required for Strict Mode / Server-side
                 template_params: {
                     name,
                     email,
