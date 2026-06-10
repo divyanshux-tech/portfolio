@@ -25,6 +25,14 @@ tast.txt
 .DS_Store
 Thumbs.db
 
+# Private Assets
+github.png
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.webp
+
 # IDE Specific
 .vscode/
 .idea/
