@@ -73,19 +73,19 @@ body {
 
 /* --- Navigation --- */
 nav {
-    position: fixed; top: 4rem; left: 50%; transform: translateX(-50%);
-    z-index: 1000; padding: 1.25rem; border-radius: 100px;
-    display: flex; gap: 3rem; align-items: center;
+    position: fixed; bottom: 3.5rem; left: 50%; transform: translateX(-50%);
+    z-index: 1000; padding: 0.8rem; border-radius: 100px;
+    display: flex; gap: 2rem; align-items: center;
     width: max-content;
     transition: var(--transition);
 }
 
 nav a, .theme-btn {
     color: var(--text-muted); text-decoration: none;
-    width: 60px; height: 60px;
+    width: 48px; height: 48px;
     display: flex; align-items: center; justify-content: center;
     border-radius: 50%; transition: var(--transition);
-    position: relative; cursor: pointer; border: none; background: transparent; font-size: 1.65rem;
+    position: relative; cursor: pointer; border: none; background: transparent; font-size: 1.3rem;
 }
 
 nav a:hover, nav a.active, .theme-btn:hover {
@@ -95,7 +95,7 @@ nav a:hover, nav a.active, .theme-btn:hover {
 
 nav a::after, .theme-btn::after {
     content: attr(data-tooltip);
-    position: absolute; top: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
+    position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
     background: var(--tooltip-bg); color: white; padding: 8px 16px; border-radius: 12px;
     font-size: 0.95rem; font-weight: 800; opacity: 0; pointer-events: none;
     transition: var(--transition); white-space: nowrap; box-shadow: 0 10px 25px rgba(0,0,0,0.4);
@@ -382,9 +382,14 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary); backg
     from { opacity: 0; transform: scale(0.85); }
     to { opacity: 1; transform: scale(1); }
 }
+@keyframes revealNav {
+    from { opacity: 0; transform: translateX(-50%) translateY(50px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
 
 .animate-reveal { animation: revealUp 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
 .animate-reveal-down { animation: revealDown 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
+.animate-reveal-up { animation: revealNav 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
 .animate-reveal-scale { animation: revealScale 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
 
 @media (max-width: 1000px) {
