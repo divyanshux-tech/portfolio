@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             const formData = {
-                user_name: contactForm.user_name.value,
-                user_email: contactForm.user_email.value,
+                name: contactForm.name.value,
+                email: contactForm.email.value,
                 message: contactForm.message.value
             };
 
