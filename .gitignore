@@ -26,8 +26,6 @@ tast.txt
 Thumbs.db
 
 # Private Assets
-github.png
-*.png
 *.jpg
 *.jpeg
 *.svg
