@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     contactForm.reset();
                 } else {
                     const error = await response.json().catch(() => ({}));
+                    console.error('Full Server Error Detail:', error);
                     throw new Error(`Server Error: ${response.status} - ${error.error || 'Unknown Error'}`);
                 }
             } catch (error) {

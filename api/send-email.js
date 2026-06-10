@@ -32,7 +32,11 @@ export default async function handler(req, res) {
         } else {
             const errorData = await response.text();
             console.error('EmailJS Error:', errorData);
-            return res.status(500).json({ error: 'Failed to send email via EmailJS' });
+            return res.status(500).json({ 
+                error: 'EmailJS Failure', 
+                details: errorData,
+                check: "Ensure your keys are correct and you have REDEPLOYED in Vercel."
+            });
         }
     } catch (error) {
         console.error('Request Error:', error);
