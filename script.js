@@ -89,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     formStatus.style.color = "var(--primary)";
                     contactForm.reset();
                 } else {
-                    throw new Error('Server unreachable');
+                    const error = await response.json().catch(() => ({}));
+                    throw new Error(`Server Error: ${response.status} - ${error.error || 'Unknown Error'}`);
                 }
             } catch (error) {
                 formStatus.innerHTML = "Security error or server failure. Please try again. ❌";
