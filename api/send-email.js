@@ -3,10 +3,17 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { user_name, user_email, message } = req.body;
+    const { name, email, message } = req.body;
 
-    if (!user_name || !user_email || !message) {
-        return res.status(400).json({ error: 'Missing required fields' });
+    // Health Check Object
+    const health = {
+        serviceIdSet: !!process.env.EMAILJS_SERVICE_ID,
+        templateIdSet: !!process.env.EMAILJS_TEMPLATE_ID,
+        publicKeySet: !!process.env.EMAILJS_PUBLIC_KEY
+    };
+
+    if (!name || !email || !message) {
+        return res.status(400).json({ error: 'Missing required fields', health });
     }
 
     try {
@@ -20,27 +27,28 @@ export default async function handler(req, res) {
                 template_id: process.env.EMAILJS_TEMPLATE_ID,
                 user_id: process.env.EMAILJS_PUBLIC_KEY,
                 template_params: {
-                    name: user_name,
-                    email: user_email,
-                    message: message,
+                    name,
+                    email,
+                    message,
                     title: "Portfolio Contact"
                 }
             }),
         });
 
+        const responseData = await response.text();
+
         if (response.ok) {
-            return res.status(200).json({ success: true });
+            return res.status(200).json({ success: true, health });
         } else {
-            const errorData = await response.text();
-            console.error('EmailJS Error:', errorData);
+            console.error('EmailJS Error:', responseData);
             return res.status(500).json({ 
                 error: 'EmailJS Failure', 
-                details: errorData,
-                check: "Ensure your keys are correct and you have REDEPLOYED in Vercel."
+                details: responseData,
+                health
             });
         }
     } catch (error) {
         console.error('Request Error:', error);
-        return res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).json({ error: 'Internal server error', details: error.message, health });
     }
 }
