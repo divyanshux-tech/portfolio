@@ -20,9 +20,10 @@ export default async function handler(req, res) {
                 template_id: process.env.EMAILJS_TEMPLATE_ID,
                 user_id: process.env.EMAILJS_PUBLIC_KEY,
                 template_params: {
-                    user_name,
-                    user_email,
-                    message
+                    name: user_name,
+                    email: user_email,
+                    message: message,
+                    title: "Portfolio Contact"
                 }
             }),
         });
