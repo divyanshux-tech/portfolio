@@ -132,4 +132,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Smart Navbar Hide (Scroll Logic)
+    let lastScroll = 0;
+    const navbar = document.querySelector('nav');
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll <= 100) {
+            navbar.classList.remove('nav-hidden');
+            return;
+        }
+        
+        if (currentScroll > lastScroll && !navbar.classList.contains('nav-hidden')) {
+            // Scroll down
+            navbar.classList.add('nav-hidden');
+        } else if (currentScroll < lastScroll && navbar.classList.contains('nav-hidden')) {
+            // Scroll up
+            navbar.classList.remove('nav-hidden');
+        }
+        lastScroll = currentScroll;
+    });
 });
