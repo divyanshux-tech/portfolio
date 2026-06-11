@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Particles Background Configuration
     particlesJS('particles-js', {
         "particles": {
-            "number": { "value": 160, "density": { "enable": true, "value_area": 900 } },
+            "number": { "value":300, "density": { "enable": true, "value_area": 900 } },
             "color": { "value": "#8b5cf6" },
             "shape": { "type": "circle" },
-            "opacity": { "value": 0.7, "random": true },
-            "size": { "value": 4.5, "random": true },
+            "opacity": { "value": 1, "random": true },
+            "size": { "value": 5, "random": true },
             "line_linked": { "enable": true, "distance": 150, "color": "#8b5cf6", "opacity": 0.3, "width": 1.2 },
             "move": { "enable": true, "speed": 2.5 }
         },

@@ -298,33 +298,48 @@ header { height: 100vh; display: flex; flex-direction: column; justify-content: 
 
 .project-header {
     height: 320px;
-    padding: 3rem;
+    padding: 0; /* Stripped padding to allow full-width photos */
     display: flex;
     justify-content: center;
     align-items: center;
     transition: var(--transition);
+    background: linear-gradient(135deg, var(--bg-accent), #1e1b4b); /* Dark cinematic gradient */
+    position: relative;
 }
 
-/* Color Themes */
-.card-red .project-header { background: #ff5a5f; }
-.card-blue .project-header { background: #3b82f6; }
-.card-yellow .project-header { background: #f59e0b; }
-.card-green .project-header { background: #10b981; }
+/* Removed individual color themes for project headers per user request */
+/* .card-red .project-header { background: #ff5a5f; } */
+/* .card-blue .project-header { background: #3b82f6; } */
+/* .card-yellow .project-header { background: #f59e0b; } */
 
 .project-screen {
     width: 100%;
     height: 100%;
-    background: #fff;
-    border-radius: 16px;
+    background: transparent;
+    border-radius: 32px 32px 0 0; /* Match card top corners */
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
 
+.project-screen img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fill the entire header box */
+    transition: var(--transition);
+}
+
+.card:hover .project-screen img {
+    transform: scale(1.05);
+}
+
 .project-screen i {
+    position: absolute;
+    z-index: 1;
     font-size: 6rem;
     color: var(--bg-color);
     opacity: 0.15;
@@ -408,4 +423,45 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary); backg
     .card-grid { grid-template-columns: 1fr; }
     .nav { gap: 1.5rem; padding: 1rem; }
     .nav a, .theme-btn { width: 50px; height: 50px; font-size: 1.4rem; }
+}
+
+/* --- Email Link Hover Effects --- */
+.email-link {
+    opacity: 0.7; /* Muted/Dull in start */
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Slower, smoother transition */
+}
+
+.email-link:hover {
+    opacity: 1;
+    transform: scale(1.03); /* More subtle size increase */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Subtle, settled neon glow */
+    color: #fff !important;
+}
+
+.email-link:hover div {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--primary-glow); /* Lower, more subtle glow */
+    filter: brightness(1.1);
+}
+
+/* --- Social Link Hover Effects --- */
+.social-link {
+    display: inline-block;
+    transition: var(--transition) !important;
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.15); /* Lift and scale */
+}
+
+.social-link:hover .fa-github {
+    color: #fff !important;
+}
+
+.social-link:hover .fa-linkedin {
+    color: #0077b5 !important;
+}
+
+.social-link:hover .fa-code {
+    color: #ffa116 !important;
 }
